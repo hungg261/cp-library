@@ -18,7 +18,7 @@ struct chash {
 template<typename K, typename V>
 using umap = unordered_map<K, V, chash>;
 
-#define TEST
+//#define TEST
 #ifdef TEST
 signed main() {
     ios_base::sync_with_stdio(0); cin.tie(0);

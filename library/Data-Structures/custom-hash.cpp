@@ -15,8 +15,14 @@ struct chash {
     }
 };
 
-template<typename K, typename V>
-using umap = unordered_map<K, V, chash>;
+struct chash2 {
+    size_t operator()(long long x) const {
+        return x ^ (x >> 16);
+    }
+};
+
+template<typename K, typename V> using umap = unordered_map<K, V, chash>;
+template<typename K, typename V> using umap2 = unordered_map<K, V, chash2>;
 
 //#define TEST
 #ifdef TEST
@@ -26,7 +32,7 @@ signed main() {
     int Q;
     cin >> Q;
 
-    umap<long long, long long> mp;
+    umap2<long long, long long> mp;
     while(Q--) {
         int type;
         cin >> type;

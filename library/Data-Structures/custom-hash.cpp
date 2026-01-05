@@ -28,7 +28,7 @@ struct chash2 {
 template<typename K, typename V> using umap = unordered_map<K, V, chash>;
 template<typename K, typename V> using umap2 = unordered_map<K, V, chash2>;
 
-//#define TEST;
+//#define TEST
 #ifdef TEST
 signed main() {
     ios_base::sync_with_stdio(0); cin.tie(0);

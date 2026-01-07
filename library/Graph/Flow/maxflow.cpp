@@ -2,7 +2,6 @@
 Checkers:
 - https://oj.vnoi.info/problem/nkflow
 */
-
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -109,6 +108,8 @@ struct MaxFlow{
     }
 };
 
+//#define TEST
+#ifdef TEST
 signed main(){
     ios_base::sync_with_stdio(0); cin.tie(0);
 
@@ -131,3 +132,4 @@ signed main(){
 
     return 0;
 }
+#endif

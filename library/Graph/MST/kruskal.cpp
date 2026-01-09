@@ -1,3 +1,8 @@
+/**
+ * Algorithm: Kruskal's Algorithm (MST)
+ * Notes:
+    - Graph assumed to be connected
+ */
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -46,7 +51,7 @@ struct DSU{
 struct Edge{
     int u, v, w;
 
-    bool operator < (const Edge& other){
+    bool operator < (const Edge& other) const{
         return this->w < other.w;
     }
 };

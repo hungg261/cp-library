@@ -18,17 +18,17 @@ struct DSU{
         sz[v] = 1;
     }
 
-    int find_set(int v){
-        return par[v] == v ? v : find_set(par[v]);
+    int find(int v){
+        return par[v] == v ? v : par[v] = find(par[v]);
     }
 
     bool same(int u, int v){
-        return find_set(u) == find_set(v);
+        return find(u) == find(v);
     }
 
-    bool union_sets(int a, int b){
-        a = find_set(a);
-        b = find_set(b);
+    bool unite(int a, int b){
+        a = find(a);
+        b = find(b);
 
         if(a != b){
             if(sz[a] < sz[b]) swap(a, b);

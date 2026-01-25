@@ -25,17 +25,17 @@ struct DSU{
         sz[v] = 1;
     }
 
-    int find_set(int v){
-        return par[v] == v ? v : par[v] = find_set(par[v]);
+    int find(int v){
+        return par[v] == v ? v : par[v] = find(par[v]);
     }
 
     bool same(int u, int v){
-        return find_set(u) == find_set(v);
+        return find(u) == find(v);
     }
 
-    bool union_sets(int a, int b){
-        a = find_set(a);
-        b = find_set(b);
+    bool unite(int a, int b){
+        a = find(a);
+        b = find(b);
 
         if(a != b){
             if(sz[a] < sz[b]) swap(a, b);
@@ -74,8 +74,8 @@ long long Boruvka(){
 
         for(int i = 0; i < m; ++i){
             const Edge& e = edges[i];
-            int cu = dsu.find_set(e.u),
-                cv = dsu.find_set(e.v);
+            int cu = dsu.find(e.u),
+                cv = dsu.find(e.v);
             if(cu == cv) continue;
 
             if(best_edges[cu] == -1 || e.w < edges[best_edges[cu]].w) best_edges[cu] = i;
@@ -83,11 +83,11 @@ long long Boruvka(){
         }
 
         for(int c = 1; c <= n; ++c){
-            if(dsu.find_set(c) != c) continue;
+            if(dsu.find(c) != c) continue;
 
             const Edge& e = edges[best_edges[c]];
             if(!dsu.same(e.u, e.v)){
-                dsu.union_sets(e.u, e.v);
+                dsu.unite(e.u, e.v);
                 mst += e.w;
 
                 --components;

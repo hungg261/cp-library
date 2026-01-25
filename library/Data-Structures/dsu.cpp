@@ -1,10 +1,3 @@
-/*
-Checkers:
-- https://judge.yosupo.jp/problem/unionfind
-*/
-#include<bits/stdc++.h>
-using namespace std;
-
 struct DSU{
     int n;
     vector<int> par, sz;
@@ -49,30 +42,3 @@ struct DSU{
         return false;
     }
 };
-
-//#define TEST
-#ifdef TEST
-signed main(){
-    ios_base::sync_with_stdio(0); cin.tie(0);
-
-    int n, Q;
-    cin >> n >> Q;
-
-    DSU dsu(n);
-    dsu.init();
-    while(Q--){
-        int type, u, v;
-        cin >> type >> u >> v;
-
-        if(type == 0){
-            dsu.union_sets(u, v);
-        }
-        else{
-            bool ok = dsu.same(u, v);
-            cout << (ok ? "1" : "0") << '\n';
-        }
-    }
-
-    return 0;
-}
-#endif
